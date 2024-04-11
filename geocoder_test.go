@@ -138,12 +138,13 @@ func TestGeocodingReverse(t *testing.T) {
 	}
 
 	address2 = Address{
-		Street:   "Avenida Paulista",
-		Number:   1540,
-		District: "Bela Vista",
-		County:   "São Paulo",
-		State:    "São Paulo",
-		Country:  "Brazil",
+		Street:      "Avenida Paulista",
+		Number:      1540,
+		District:    "Bela Vista",
+		County:      "São Paulo",
+		State:       "São Paulo",
+		Country:     "Brazil",
+		CountryCode: "BR",
 	}
 
 	// Table tests
@@ -193,6 +194,10 @@ func TestGeocodingReverse(t *testing.T) {
 				if addresses[0].Country != pair.address.Country {
 					t.Error("Expected Country:", pair.address.Country,
 						"Received Country:", addresses[0].Country)
+				}
+				if addresses[0].CountryCode != pair.address.CountryCode {
+					t.Error("Expected CountryCode:", pair.address.Country,
+						"Received CountryCode:", addresses[0].Country)
 				}
 			} else {
 				t.Error("Expected at least 1 result Received 0 results")

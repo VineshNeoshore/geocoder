@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kelvins/geocoder/structs"
+	"github.com/VineshNeoshore/geocoder/structs"
 )
 
 // ApiKey The user should set the API KEY provided by Google
@@ -31,6 +31,7 @@ type Address struct {
 	County           string
 	State            string
 	Country          string
+	CountryCode      string
 	PostalCode       string
 	FormattedAddress string
 	Types            string
@@ -209,6 +210,7 @@ func convertResultsToAddress(results structs.Results) (addresses []Address) {
 					break
 				case "country":
 					address.Country = component.LongName
+					address.CountryCode = component.ShortName
 					break
 				case "postal_code":
 					address.PostalCode = component.LongName
